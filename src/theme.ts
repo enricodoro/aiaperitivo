@@ -55,21 +55,18 @@ export const theme = createTheme({
           lineHeight: '24px',
           letterSpacing: '0.46px',
           padding: '8px 22px',
-          height: '64px',
         },
         sizeMedium: {
           fontSize: '13px',
           lineHeight: '22px',
           letterSpacing: '0.4px',
           padding: '6px 16px',
-          height: '62px',
         },
         sizeSmall: {
           fontSize: '12px',
           lineHeight: '21px',
           letterSpacing: '0.46px',
           padding: '4px 10px',
-          height: '61px',
         },
         contained: {
           boxShadow: '0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12)',
