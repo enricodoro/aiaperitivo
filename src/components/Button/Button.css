@@ -1,30 +1,250 @@
-.storybook-button {
-  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400;700&display=swap');
+
+:root {
+  --primary-contrast: #FFF;
+  --text-family: "Maven Pro";
+  --secondary-contrast: #FFF;
+  --action-disabled: rgba(0, 0, 0, 0.38);
+  --primary-main: #021B79;
+  --primary-states-focus-visible: rgba(2, 27, 121, 0.3);
+  --secondary-main: #077BFF;
+  --secondary-states-focus-visible: rgba(7, 123, 255, 0.3);
+  --white-contrast: #021B79;
+  --white-more-dark: #C2C2C2;
+  --common-white-states-main: #FFF;
+  --common-white-states-focus-visible: rgba(255, 255, 255, 0.3);
+}
+
+.button {
+  font-family: var(--text-family), -apple-system, Roboto, Helvetica, sans-serif;
   font-weight: 700;
-  border: 0;
-  border-radius: 3em;
+  text-transform: uppercase;
+  border: none;
   cursor: pointer;
-  display: inline-block;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.button:focus-visible::before {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: 100px;
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.button-base {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.button-label {
   line-height: 1;
 }
-.storybook-button--primary {
-  color: white;
-  background-color: #1ea7fd;
+
+.button-spinner {
+  animation: spin 1s linear infinite;
 }
-.storybook-button--secondary {
-  color: #333;
-  background-color: transparent;
-  box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 0px 1px inset;
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
-.storybook-button--small {
+
+.button--small {
   font-size: 12px;
-  padding: 10px 16px;
+  line-height: 21px;
+  letter-spacing: 0.46px;
+  padding: 4px 10px;
+  min-height: 29px;
 }
-.storybook-button--medium {
+
+.button--medium {
+  font-size: 13px;
+  line-height: 22px;
+  letter-spacing: 0.4px;
+  padding: 6px 16px;
+  min-height: 34px;
+}
+
+.button--large {
   font-size: 14px;
-  padding: 11px 20px;
+  line-height: 24px;
+  letter-spacing: 0.46px;
+  padding: 8px 22px;
+  min-height: 40px;
 }
-.storybook-button--large {
-  font-size: 16px;
-  padding: 12px 24px;
+
+.button--contained.button--primary {
+  background-color: var(--primary-main);
+  color: var(--primary-contrast);
+}
+
+.button--contained.button--primary:hover:not(:disabled) {
+  background-color: #031f8a;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.button--contained.button--primary:focus-visible::before {
+  background-color: var(--primary-states-focus-visible);
+}
+
+.button--contained.button--secondary {
+  background-color: var(--secondary-main);
+  color: var(--secondary-contrast);
+}
+
+.button--contained.button--secondary:hover:not(:disabled) {
+  background-color: #0669d9;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.button--contained.button--secondary:focus-visible::before {
+  background-color: var(--secondary-states-focus-visible);
+}
+
+.button--contained.button--tertiary {
+  background-color: var(--common-white-states-main);
+  color: var(--white-contrast);
+}
+
+.button--contained.button--tertiary:hover:not(:disabled) {
+  background-color: #f5f5f5;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.button--contained.button--tertiary:focus-visible::before {
+  background-color: var(--common-white-states-focus-visible);
+}
+
+.button--text.button--primary {
+  background-color: transparent;
+  color: var(--primary-main);
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.button--text.button--primary:hover:not(:disabled) {
+  background-color: rgba(2, 27, 121, 0.04);
+}
+
+.button--text.button--primary:focus-visible::before {
+  background-color: var(--primary-states-focus-visible);
+}
+
+.button--text.button--primary.button--active {
+  color: var(--secondary-main);
+}
+
+.button--text.button--secondary {
+  background-color: transparent;
+  color: var(--secondary-main);
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.button--text.button--secondary:hover:not(:disabled) {
+  background-color: rgba(7, 123, 255, 0.04);
+}
+
+.button--text.button--secondary:focus-visible::before {
+  background-color: var(--secondary-states-focus-visible);
+}
+
+.button--text.button--white {
+  background-color: transparent;
+  color: var(--common-white-states-main);
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.button--text.button--white:hover:not(:disabled) {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.button--text.button--white:focus-visible::before {
+  background-color: var(--common-white-states-focus-visible);
+}
+
+.button--disabled,
+.button:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.button--contained.button--disabled,
+.button--contained:disabled {
+  background-color: rgba(0, 0, 0, 0.12);
+  color: var(--action-disabled);
+}
+
+.button--text.button--disabled,
+.button--text:disabled {
+  color: var(--action-disabled);
+}
+
+.button--contrast-primary.button--contained.button--disabled,
+.button--contrast-primary.button--contained:disabled {
+  background-color: var(--white-more-dark);
+  color: var(--white-contrast);
+}
+
+.button--contrast-primary.button--text.button--disabled,
+.button--contrast-primary.button--text:disabled {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.button--loading {
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .button--large {
+    font-size: 13px;
+    padding: 7px 20px;
+    min-height: 38px;
+  }
+
+  .button--medium {
+    font-size: 12px;
+    padding: 5px 14px;
+    min-height: 32px;
+  }
+
+  .button--small {
+    font-size: 11px;
+    padding: 3px 8px;
+    min-height: 27px;
+  }
+}
+
+@media (max-width: 480px) {
+  .button--large {
+    font-size: 12px;
+    padding: 6px 18px;
+    min-height: 36px;
+  }
+
+  .button--medium {
+    font-size: 11px;
+    padding: 4px 12px;
+    min-height: 30px;
+  }
+
+  .button--small {
+    font-size: 10px;
+    padding: 2px 6px;
+    min-height: 25px;
+  }
 }
